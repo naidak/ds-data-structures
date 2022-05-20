@@ -1,17 +1,20 @@
 #include <iostream>
 using namespace std;
 
-struct Node {
-	int data;
+template <class T>
+class Node {
+public:
+	T data;
 	Node* next;
 	Node* prev;
 };
 
-Node* head;
+Node <int> *head;
 
-void InsertAtHead(int x)
+template <class T>
+void InsertAtHead(T x)
 {
-	Node* temp = new Node();
+	Node<T> * temp = new Node<T>();
 	temp->data = x;
 	temp->prev = nullptr;
 	temp->next = nullptr;
@@ -24,10 +27,11 @@ void InsertAtHead(int x)
 	head = temp;
 }
 
-void InsertAtTail(int x)
+template <class T>
+void InsertAtTail(T x)
 {
-	Node* temp = new Node();
-	Node* temp1 = head;
+	Node<T> * temp = new Node<T>();
+	Node<T> * temp1 = head;
 	temp->data = x;
 	temp->next = nullptr;
 	temp->prev = nullptr;
@@ -45,7 +49,8 @@ void InsertAtTail(int x)
 	
 }
 
-void print(Node * node)
+template <class T>
+void print(Node<T> * node)
 {
 	while (node!=nullptr)
 	{
@@ -53,8 +58,8 @@ void print(Node * node)
 		node = node->next;
 	}
 }
-
-void reversePrint(Node* node)
+template <class T>
+void reversePrint(Node<T> * node)
 {
 	while (node->next != nullptr)
 	{
