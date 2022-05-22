@@ -38,6 +38,59 @@ bool Search(BstNode* root, int data)
 	return Search(root->right, data);
 }
 
+int FindMin(BstNode* root) { //iterative solution
+	if (root == nullptr)
+	{
+		cout << "Empty tree!";
+		return -1;
+	}
+	while (root->left != nullptr) {
+		root = root->left;
+	} //going left as much asa possible
+	return root->data;
+}
+
+//recursive solution for finding min element in BST
+int FindMinRec(BstNode* root){
+	if (root == nullptr)
+	{
+		cout << "Empty tree!";
+		return -1;
+	}
+	if (root->left == nullptr)
+		return root->data;
+	return FindMinRec(root->left);
+}
+
+//iterative solution for finding max element in BST
+int FindMax(BstNode* root)
+{
+	if (root == nullptr)
+	{
+		cout << "Tree is empty!"<<endl;
+		return -1;
+	}
+	while (root->right != nullptr)
+	{
+		root = root->right;
+	}
+
+	return root->data;
+}
+
+//recursive solution 
+int FindMaxRec(BstNode* root)
+{
+	if (root == nullptr)
+	{
+		cout << "Tree is empty!" << endl;
+		return -1;
+	}
+	if (root->right == nullptr)
+		return root->data;
+	return FindMaxRec(root->right);
+}
+
 int main() {
 
 	BstNode* root = nullptr;
@@ -53,6 +106,15 @@ int main() {
 	cout << "Enter the number that you're looking for: ";
 	cin >> num;
 	cout<<(Search(root, num) ? "Number founded" : "Number not found")<<endl;
+
+	cout << "::::::::::::: Testing iterative solutions :::::::::::::" << endl;
+	cout << "Min element: " << FindMin(root)<<endl;
+	cout << "Max element: " << FindMax(root) << endl<<endl;
+
+	cout << "::::::::::::: Testing recursive solutions :::::::::::::" << endl;
+	cout << "Min element: " << FindMinRec(root) << endl;
+	cout << "Max element: " << FindMaxRec(root) << endl << endl;
+
 
 	system("pause>0");
 	return 0;
